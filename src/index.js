@@ -104,6 +104,12 @@ let assign = function () {
     return variable;
 };
 
+let reduceRange = (ranges) => {
+    for (let i = 0; i < ranges.length; i++) {
+        let interRanges = ranges[i];
+    }
+};
+
 module.exports = {
     belong,
     predicate,
