@@ -4,7 +4,11 @@
   "description": "General Set DSL",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "mocha test/**/*.js"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> 3cd238f25856fa4e9226260986c55f95f820d910
   },
   "repository": {
     "type": "git",
@@ -21,8 +25,12 @@
   },
   "homepage": "https://github.com/LoveKino/setcom#readme",
   "devDependencies": {
+<<<<<<< HEAD
     "cl-jsoneq": "0.0.2",
     "defcomment": "0.0.8",
     "mocha": "^2.4.5"
+=======
+    "defcomment": "0.0.8"
+>>>>>>> 3cd238f25856fa4e9226260986c55f95f820d910
   }
 }
