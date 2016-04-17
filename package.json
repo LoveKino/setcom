@@ -1,0 +1,28 @@
+{
+  "name": "setcom",
+  "version": "0.0.1",
+  "description": "General Set DSL",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoveKino/setcom.git"
+  },
+  "keywords": [
+    "set",
+    "dsl"
+  ],
+  "author": "ddchen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LoveKino/setcom/issues"
+  },
+  "homepage": "https://github.com/LoveKino/setcom#readme",
+  "devDependencies": {
+    "cl-jsoneq": "0.0.2",
+    "defcomment": "0.0.8",
+    "mocha": "^2.4.5"
+  }
+}
