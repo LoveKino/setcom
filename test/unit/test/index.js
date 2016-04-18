@@ -10,10 +10,11 @@ cases.push(
          [
 [[null, [1, 2], [3, 4]], {
 ranges: [[[1, 2], [3, 4]]],
-predicates: []
+predicates: [],
+pick: null
 }]
 ],
-         "[\n[[null, [1, 2], [3, 4]], {\nranges: [[[1, 2], [3, 4]]],\npredicates: []\n}]\n]")
+         "[\n[[null, [1, 2], [3, 4]], {\nranges: [[[1, 2], [3, 4]]],\npredicates: [],\npick: null\n}]\n]")
 );
 var testRets = runCases(cases, '/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/index.js');
 if(typeof module === 'object') {
