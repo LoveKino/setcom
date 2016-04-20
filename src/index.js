@@ -28,13 +28,11 @@ let all = require('./reduce').all;
  * (5) output variable
  *
  */
-let id = 0;
 let defVar = () => {
     return {
         ranges: [],
         predicates: [],
-        pick: null,
-        id: id++
+        pick: null
     };
 };
 
