@@ -140,7 +140,9 @@ let findRelatedVars = (open, close) => {
             let depVars = predicate.vars;
             for (let j = 0; j < depVars.length; j++) {
                 let depVar = depVars[j];
-                if (!baseset.contain(close, depVar)) {
+                if (!baseset.contain(close, depVar) &&
+                    !baseset.contain(open, depVar)
+                   ) {
                     open.push(depVar);
                 }
             }
