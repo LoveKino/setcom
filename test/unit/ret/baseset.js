@@ -223,6 +223,44 @@ let findIndex = (list, item) => {
     return -1;
 };
 
+/**
+ *
+ * ## test
+[
+    [
+        [0, 5, 2],
+        [0, 2, 4]
+    ],
+    [
+        [10, 5, -2],
+        [10, 8, 6]
+    ],
+    [
+        [3, 1],
+        [3, 2, 1]
+    ]
+]
+*/
+
+let section = (start, end, step) => {
+    let def = 1;
+    if (start > end) {
+        def = -1;
+    }
+    step = step || def;
+    let ret = [];
+    if (step > 0) {
+        for (let i = start; i <= end; i += step) {
+            ret.push(i);
+        }
+    } else {
+        for (let i = start; i >= end; i += step) {
+            ret.push(i);
+        }
+    }
+    return ret;
+};
+
 module.exports = {
     contain,
     unionSet,
@@ -230,7 +268,8 @@ module.exports = {
     combineMatrix,
     descartes,
     andHigh,
-    findIndex
+    findIndex,
+    section
 };
 
 ;(function () {
@@ -240,5 +279,6 @@ __exportsVariable('/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/ba
 __exportsVariable('/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/baseset.js', 'unionSet', unionSet);
 __exportsVariable('/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/baseset.js', 'interset', interset);
 __exportsVariable('/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/baseset.js', 'andHigh', andHigh);
+__exportsVariable('/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/baseset.js', 'section', section);
     })();
     

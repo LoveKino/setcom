@@ -135,6 +135,26 @@ true
 ],
          "[\n[\n[\n[(x) => x > 3],\n[3]\n],\nfalse\n],\n[\n[\n[(x, y) => x + y > 10, (x) => x < 5],\n[4, 20]\n],\ntrue\n]\n]")
 );
+
+cases.push(
+    it('/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/baseset.js',
+         'section',
+         [
+[
+[0, 5, 2],
+[0, 2, 4]
+],
+[
+[10, 5, -2],
+[10, 8, 6]
+],
+[
+[3, 1],
+[3, 2, 1]
+]
+],
+         "[\n[\n[0, 5, 2],\n[0, 2, 4]\n],\n[\n[10, 5, -2],\n[10, 8, 6]\n],\n[\n[3, 1],\n[3, 2, 1]\n]\n]")
+);
 var testRets = runCases(cases, '/Users/yuer/workspaceforme/opensource/setcom/test/unit/ret/baseset.js');
 if(typeof module === 'object') {
     module.exports = testRets;
