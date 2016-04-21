@@ -137,6 +137,30 @@ let unionSet = (ranges) => {
 };
 
 /**
+ * difference set
+ *
+ * ## test
+[
+    [
+        [
+            [1, 2, 3, 4],
+            [3, 2, 5, 7]
+        ],
+        [1, 4]
+    ]
+]
+*/
+let difference = (set1, set2) => {
+    let diff = [];
+    for (let i = 0; i < set1.length; i++) {
+        if (!contain(set2, set1[i])) {
+            diff.push(set1[i]);
+        }
+    }
+    return diff;
+};
+
+/**
  *
  * ## test
 [
@@ -269,5 +293,6 @@ module.exports = {
     descartes,
     andHigh,
     findIndex,
-    section
+    section,
+    difference
 };
