@@ -52,4 +52,18 @@ describe('index', () => {
         let B = all(y);
         assert.equal(jsoneq(B, [1, 2]), true);
     });
+
+    it('assignT', () => {
+        let A = [
+            [1, 2],
+            [3, 4],
+            [5, 6]
+        ];
+        let a = defVar(),
+            b = defVar();
+        belong(a, A);
+        belong(b, a);
+        let B = all(b);
+        assert.equal(jsoneq(B, [1, 2, 3, 4, 5, 6]), true);
+    });
 });

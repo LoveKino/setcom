@@ -32,7 +32,8 @@ let defVar = () => {
     return {
         ranges: [],
         predicates: [],
-        pick: null
+        pick: null,
+        __type: 'variable'
     };
 };
 
@@ -42,7 +43,8 @@ let defVar = () => {
  *      [[null, [1, 2], [3, 4]], {
  *          ranges: [[[1, 2], [3, 4]]],
  *          predicates: [],
- *          pick: null
+ *          pick: null,
+ *          __type: 'variable'
  *      }]
  * ]
  */

@@ -61,7 +61,23 @@ let reducePick = (pick) => {
     return rets;
 };
 
-let reduceRanges = (ranges) => baseset.combineMatrix(ranges);
+/**
+ * belong relationship can not have circle
+ */
+let reduceRanges = (ranges) => {
+    for (let i = 0; i < ranges.length; i++) {
+        let rangeList = ranges[i];
+        for (let j = 0; j < rangeList.length; j++) {
+            let range = rangeList[j];
+            if(isVariable(range)) {
+                ranges[i][j] = baseset.unionSet(all(range));
+            }
+        }
+    }
+    return baseset.combineMatrix(ranges);
+};
+
+let isVariable = (v) => v && typeof v === 'object' && v.__type === 'variable';
 
 let reducePredicates = (variables) => {
     let vars = findRelatedVars(variables);
@@ -142,7 +158,7 @@ let findRelatedVars = (open, close) => {
                 let depVar = depVars[j];
                 if (!baseset.contain(close, depVar) &&
                     !baseset.contain(open, depVar)
-                   ) {
+                ) {
                     open.push(depVar);
                 }
             }
