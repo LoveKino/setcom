@@ -32,7 +32,8 @@ let defVar = () => {
     return {
         ranges: [],
         predicates: [],
-        pick: null
+        pick: null,
+        __type: 'variable'
     };
 };
 
