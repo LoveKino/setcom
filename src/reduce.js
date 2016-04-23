@@ -69,7 +69,7 @@ let reduceRanges = (ranges) => {
         let rangeList = ranges[i];
         for (let j = 0; j < rangeList.length; j++) {
             let range = rangeList[j];
-            if(isVariable(range)) {
+            if (isVariable(range)) {
                 ranges[i][j] = baseset.unionSet(all(range));
             }
         }
