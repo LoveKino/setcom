@@ -16,9 +16,11 @@ Set operation DSL.
 let setcom = require('setcom');
 let elemOf = setcom.elemOf;
 let all = setcom.all;
+let predicate = setcom.predicate;
 
 let A = [-1, 2, 3, -4];
 let x = elemOf(A);
+predicate(x, (x) => x > 0);
 let B = all(x);
 console.log(B); // [2, 3]
 ```
