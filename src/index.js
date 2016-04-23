@@ -25,5 +25,6 @@ module.exports = {
     interset: baseset.interset,
     difference: baseset.difference,
     descartes: baseset.descartes,
-    elemOf
+    elemOf,
+    section: baseset.section
 };
