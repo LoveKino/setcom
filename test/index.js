@@ -11,6 +11,9 @@ let logic = index.logic;
 let any = index.any;
 let exist = index.exist;
 
+let defSet = index.defSet;
+let ellipsis = index.ellipsis;
+
 let jsoneq = require('cl-jsoneq');
 
 describe('index', () => {
@@ -84,10 +87,23 @@ describe('index', () => {
     it('any & exist', () => {
         let A = [4, 7, 6];
         let B = [9, 10, 20];
-        let a = elemOf(A), b = elemOf(B);
+        let a = elemOf(A),
+            b = elemOf(B);
         let t1 = logic(any(a), exist(b), (a, b) => a + b > 22);
         let t2 = logic(any(a), exist(b), (a, b) => a + b > 25);
         assert.equal(t1, true);
         assert.equal(t2, false);
+    });
+
+    it('defSet', () => {
+        let ret = defSet([1, 2, ellipsis, 5], (x) => x > 3, (x) => 2 * x);
+        assert.equal(jsoneq(ret, [8, 10]), true);
+    });
+
+    it('any & expand', () => {
+        let t1 = logic(any([3, 5, ellipsis, 10]), exist([2, ellipsis, 4]), (a, b) => a + b > 22);
+        let t2 = logic(any([3, 5, ellipsis, 10]), exist([2, ellipsis, 4]), (a, b) => a + b > 4);
+        assert.equal(t1, false);
+        assert.equal(t2, true);
     });
 });

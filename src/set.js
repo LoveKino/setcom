@@ -1,5 +1,7 @@
 'use strict';
 
+let all = require('./reduce').all;
+
 /**
  * set comprehesion
  *
@@ -79,9 +81,43 @@ let assign = function () {
     return variable;
 };
 
+let elemOf = (list) => {
+    let variable = defVar();
+    belong(variable, list);
+    return variable;
+};
+
+/**
+ * ## test
+[
+    [
+        [
+            [1, 2, 3], (x) => x > 2, (x) => x * 2
+        ],
+        [6]
+    ]
+]
+*/
+
+let defSet = (domain, predi, outputFun) => {
+    predi = predi || truthy;
+    outputFun = outputFun || id;
+
+    let variable = elemOf(domain);
+    predicate(variable, predi);
+    let retVariable = assign(variable, outputFun);
+    return all(retVariable);
+};
+
+let id = v => v;
+
+let truthy = () => false;
+
 module.exports = {
     belong,
     predicate,
     assign,
-    defVar
+    defVar,
+    elemOf,
+    defSet
 };
