@@ -111,7 +111,7 @@ let defSet = (domain, predi, outputFun) => {
 
 let id = v => v;
 
-let truthy = () => false;
+let truthy = () => true;
 
 module.exports = {
     belong,
