@@ -1,6 +1,6 @@
 {
   "name": "setcom",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "General Set DSL",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,6 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
-    "cl-ellipsis": "0.0.3"
+    "cl-ellipsis": "0.0.4"
   }
 }
