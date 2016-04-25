@@ -1,90 +1,54 @@
 'use strict';
 
+/**
+ * make some adapter in the module
+ */
+
 let all = require('./reduce').all;
+let set = require('./set');
+let logic = require('./logic');
+let baseset = require('./baseset');
+let pattern = require('cl-ellipsis');
+let expand = pattern.expand;
+let ellipsis = pattern.ellipsis;
 
-/**
- * set comprehesion
- *
- * [ x*2 | x <- [1..10], 2*x < 12]
- * output function    x*2
- * varibale           x
- * input set          [1..10]
- * predicate          2*x < 12
- *
- * short sentences
- */
-
-/**
- * declaration style
- *
- * (1) declare variable
- *
- * (2) declare variable's range
- *
- * (3) declare variable's predicate
- *
- * (4) assign variable (compose some variable to a new variable)
- *
- * (5) output variable
- *
- */
-let defVar = () => {
-    return {
-        ranges: [],
-        predicates: [],
-        pick: null,
-        __type: 'variable'
-    };
+// support ... expandation
+let defSet = (domain, predi, outputFun) => {
+    domain = expand(domain);
+    return set.defSet(domain, predi, outputFun);
 };
 
-/**
- * ## test
- * [
- *      [[null, [1, 2], [3, 4]], {
- *          ranges: [[[1, 2], [3, 4]]],
- *          predicates: [],
- *          pick: null,
- *          __type: 'variable'
- *      }]
- * ]
- */
-let belong = function () {
-    let args = Array.prototype.slice.call(arguments);
-    let x = args.shift() || defVar();
-    x.ranges.push(args);
-    return x;
-};
+// support array and ... expandation
+let any = (v) => logic.any(getVariable(v));
+let exist = (v) => logic.exist(getVariable(v));
 
-let predicate = function () {
-    let vars = Array.prototype.slice.call(arguments);
-    let boolFun = vars.pop();
-
-    let predi = {
-        vars,
-        boolFun
-    };
-
-    for (let i = 0; i < vars.length; i++) {
-        let variable = vars[i];
-        variable.predicates.push(predi);
+let getVariable = (v) => {
+    let variable = v;
+    if(isArray(v)) {
+        v = expand(v);
+        variable = set.elemOf(v);
     }
-};
-
-let assign = function () {
-    let vars = Array.prototype.slice.call(arguments);
-    let func = vars.pop();
-    let variable = defVar();
-    variable.pick = {
-        vars,
-        func
-    };
     return variable;
 };
 
+let isArray = v => v && typeof v === 'object' && typeof v.length === 'number';
+
 module.exports = {
-    belong,
-    predicate,
-    assign,
-    defVar,
-    all
+    belong: set.belong,
+    predicate: set.predicate,
+    assign: set.assign,
+    defVar: set.defVar,
+    all,
+    logic: logic.logic,
+    any: any,
+    exist: exist,
+    contain: baseset.contain,
+    unionSet: baseset.unionSet,
+    interset: baseset.interset,
+    difference: baseset.difference,
+    descartes: baseset.descartes,
+    elemOf: set.elemOf,
+    section: baseset.section,
+    defSet,
+    ellipsis
 };

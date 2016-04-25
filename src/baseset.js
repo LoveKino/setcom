@@ -252,36 +252,57 @@ let findIndex = (list, item) => {
  * ## test
 [
     [
-        [0, 5, 2],
-        [0, 2, 4]
+        [1, 6, 2],
+        [1, 3, 5, 6]
     ],
     [
-        [10, 5, -2],
-        [10, 8, 6]
+        [6, 1, -2],
+        [6, 4, 2, 1]
     ],
     [
-        [3, 1],
-        [3, 2, 1]
+        [6, 4],
+        [6, 5, 4]
+    ],
+    [
+        [4, 6],
+        [4, 5, 6]
+    ],
+    [
+        [0, 0],
+        [0]
+    ],
+    [
+        [4, 2, 1],
+        [4, 2]
+    ],
+    [
+        [1, 5, 0],
+        [1, 5]
+    ],
+    [
+        [2, 4, -1],
+        [2, 4]
     ]
 ]
 */
 
 let section = (start, end, step) => {
-    let def = 1;
-    if (start > end) {
-        def = -1;
-    }
-    step = step || def;
-    let ret = [];
+    let defStep = 1;
+    if (end < start) defStep = -1;
+    else if (end === start) defStep = 0;
+    if (step === undefined) step = defStep;
+    let ret = [start];
     if (step > 0) {
-        for (let i = start; i <= end; i += step) {
+        for (var i = start + step; i < end; i += step) {
             ret.push(i);
         }
     } else {
-        for (let i = start; i >= end; i += step) {
-            ret.push(i);
+        for (var j = start + step; j > end; j += step) {
+            ret.push(j);
         }
     }
+
+    start !== end && ret.push(end);
     return ret;
 };
 

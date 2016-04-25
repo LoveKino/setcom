@@ -8,7 +8,6 @@ let section = baseset.section;
 let belong = index.belong;
 let all = index.all;
 let defVar = index.defVar;
-let assign = index.assign;
 let predicate = index.predicate;
 
 let A = section(1, 10);
