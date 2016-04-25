@@ -24,7 +24,7 @@ let exist = (v) => logic.exist(getVariable(v));
 
 let getVariable = (v) => {
     let variable = v;
-    if(isArray(v)) {
+    if(isArray(v) || typeof v === 'string') {
         v = expand(v);
         variable = set.elemOf(v);
     }

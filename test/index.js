@@ -67,10 +67,8 @@ describe('index', () => {
     });
 
     it('any', () => {
-        let A = [4, 7, 6];
-        let a = elemOf(A);
-        let t1 = logic(any(a), (a) => a > 3);
-        let t2 = logic(any(a), (a) => a > 5);
+        let t1 = logic(any('4 6 7 ... 10'), (a) => a > 3);
+        let t2 = logic(any('4 6 7 ... 10'), (a) => a > 5);
         assert.equal(t1, true);
         assert.equal(t2, false);
     });
