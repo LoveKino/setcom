@@ -50,5 +50,6 @@ module.exports = {
     elemOf: set.elemOf,
     section: baseset.section,
     defSet,
-    ellipsis
+    ellipsis,
+    deRepeat: baseset.deRepeat
 };
