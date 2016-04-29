@@ -330,6 +330,7 @@ let deRepeat = (list, eq) => {
 };
 
 let defEq = (a, b) => a === b;
+
 module.exports = {
     contain,
     unionSet,
