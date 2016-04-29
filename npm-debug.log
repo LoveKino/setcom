@@ -1,0 +1,100 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/yuer/workspaceforme/env/soft/nvm/versions/node/v5.10.0/bin/node',
+1 verbose cli   '/Users/yuer/workspaceforme/env/soft/nvm/versions/node/v5.10.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.8.3
+3 info using node@v5.10.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/yuer/workspaceforme/opensource/setcom',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/yuer/.npm/setcom/0.0.12/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/yuer/.npm correctMkdir not in flight; initializing
+10 info lifecycle setcom@0.0.12~prepublish: setcom@0.0.12
+11 silly lifecycle setcom@0.0.12~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/yuer/.npm/setcom/0.0.12/package.tgz',
+12 verbose tar pack   '/Users/yuer/workspaceforme/opensource/setcom' ]
+13 verbose tarball /Users/yuer/.npm/setcom/0.0.12/package.tgz
+14 verbose folder /Users/yuer/workspaceforme/opensource/setcom
+15 verbose addLocalTarball adding from inside cache /Users/yuer/.npm/setcom/0.0.12/package.tgz
+16 verbose correctMkdir /Users/yuer/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd setcom@0.0.12
+18 verbose afterAdd /Users/yuer/.npm/setcom/0.0.12/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/yuer/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/yuer/.npm/setcom/0.0.12/package/package.json written
+21 silly publish { name: 'setcom',
+21 silly publish   version: '0.0.12',
+21 silly publish   description: 'General Set DSL',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'mocha test/**/*.js' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/LoveKino/setcom.git' },
+21 silly publish   keywords: [ 'set', 'dsl' ],
+21 silly publish   author: { name: 'ddchen' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/LoveKino/setcom/issues' },
+21 silly publish   homepage: 'https://github.com/LoveKino/setcom#readme',
+21 silly publish   devDependencies: { 'cl-jsoneq': '0.0.2', defcomment: '0.0.8', mocha: '^2.4.5' },
+21 silly publish   dependencies: { 'cl-ellipsis': '0.0.5' },
+21 silly publish   readme: '# setcom\n\nGeneral Set Declaration DSL.\n\nSet operation DSL.\n\n## install\n\n`npm i setcom --save`\n\n## set example\n\n- eg1: B = {x | x ∈ A, x > 0}\n\n```js\nlet setcom = require(\'setcom\');\nlet elemOf = setcom.elemOf;\nlet all = setcom.all;\nlet predicate = setcom.predicate;\n\nlet A = [-1, 2, 3, -4];\nlet x = elemOf(A);\npredicate(x, (x) => x > 0);\nlet B = all(x);\nconsole.log(B); // [2, 3]\n```\n\n- eg2: C = {(x, y) | x ∈ A, y ∈ B, x + y < 20}\n\n```js\nlet setcom = require(\'setcom\');\nlet elemOf = setcom.elemOf;\nlet all = setcom.all;\nlet predicate = setcom.predicate;\n\nlet A = [6, 10, 20];\nlet B = [12, 2];\nlet x = elemOf(A);\nlet y = elemOf(B);\npredicate(x, y, (x, y) => x + y < 20);\nlet C = all(x, y);\nconsole.log(C); // [[6, 12], [6, 2], [10, 2]]\n```\n\n- eg3: B = {y | y = x.a, x ∈ A}\n\n```js\nlet setcom = require(\'setcom\');\nlet elemOf = setcom.elemOf;\nlet all = setcom.all;\nlet predicate = setcom.predicate;\nlet assign = setcom.assign;\n\nlet A = [{a: 3, b: 2}, {a: 4, b: 5}];\nlet x = elemOf(A);\nlet y = assign(x, (x) => x.a);\nlet B = all(y);\nconsole.log(B); // [3, 4]\n```\n\n## logic example\n\n- eg: any x in set A, x > 0\n\n```js\nlet setcom = require(\'setcom\');\nlet elemOf = setcom.elemOf;\nlet logic = setcom.logic;\nlet any = setcom.any;\n\nlet A = [1, 2, 3];\n\nlogic(any(elemOf(A)), (x) => x > 0); // true\n```\n\n- eg: for any x in A, exist y in B, x + y > 20\n\n```js\nlet setcom = require(\'setcom\');\nlet elemOf = setcom.elemOf;\nlet logic = setcom.logic;\nlet any = setcom.any;\nlet exist = setcom.exist;\n\nlet A = [1, 2, 3];\nlet B = [30, 20];\n\nlogic(any(elemOf(A)), exist(elemOf(B)), (x, y) => x + y > 20); // true\n```\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '700a0799532895ee71714af53773b7f092676c12',
+21 silly publish   _id: 'setcom@0.0.12',
+21 silly publish   _shasum: 'bbae53dff651c17d157a0eee302d3dadc2caba4f',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name setcom
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'setcom',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'setcom',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/setcom
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/yuer/.npm/setcom/0.0.12/package.tgz
+30 verbose request uri https://registry.npmjs.org/setcom
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 12:24:28 AM
+33 verbose request using bearer token for auth
+34 verbose request id 64db744794916df0
+35 http request PUT https://registry.npmjs.org/setcom
+36 info retry will retry, error on last attempt: Error: read ETIMEDOUT
+37 info attempt registry request try #2 at 12:28:26 AM
+38 verbose request using bearer token for auth
+39 http request PUT https://registry.npmjs.org/setcom
+40 info retry will retry, error on last attempt: Error: read ETIMEDOUT
+41 info attempt registry request try #3 at 12:31:39 AM
+42 verbose request using bearer token for auth
+43 http request PUT https://registry.npmjs.org/setcom
+44 verbose request invalidating /Users/yuer/.npm/registry.npmjs.org/setcom on PUT
+45 error publish Failed PUT undefined
+46 verbose stack Error: read ETIMEDOUT
+46 verbose stack     at exports._errnoException (util.js:890:11)
+46 verbose stack     at TLSWrap.onread (net.js:552:26)
+47 verbose cwd /Users/yuer/workspaceforme/opensource/setcom
+48 error Darwin 15.4.0
+49 error argv "/Users/yuer/workspaceforme/env/soft/nvm/versions/node/v5.10.0/bin/node" "/Users/yuer/workspaceforme/env/soft/nvm/versions/node/v5.10.0/bin/npm" "publish"
+50 error node v5.10.0
+51 error npm  v3.8.3
+52 error code ETIMEDOUT
+53 error errno ETIMEDOUT
+54 error syscall read
+55 error network read ETIMEDOUT
+56 error network This is most likely not a problem with npm itself
+56 error network and is related to network connectivity.
+56 error network In most cases you are behind a proxy or have bad network settings.
+56 error network
+56 error network If you are behind a proxy, please make sure that the
+56 error network 'proxy' config is set properly.  See: 'npm help config'
+57 verbose exit [ 1, true ]

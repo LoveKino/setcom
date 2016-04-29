@@ -12,7 +12,7 @@ i = 3, j ∈ [1, 2, 3], f(1) > 0, f(2) > 0, f(3) > 0
 
 [1, ..., i] is a dynamic set
 
-- support eq interface
+- support eq interface etc
 
 ## done
 
