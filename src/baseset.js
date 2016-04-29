@@ -124,7 +124,7 @@ let unionSet = (ranges, eq) => {
     for (let i = 0; i < ranges.length; i++) {
         let range = ranges[i];
         if (!ret) {
-            ret = range;
+            ret = range.slice(0); // copy
         } else {
             for (let j = 0; j < range.length; j++) {
                 if (!contain(ret, range[j], eq)) {
@@ -183,7 +183,7 @@ let interset = (ranges, eq) => {
     for (let i = 0; i < ranges.length; i++) {
         let range = ranges[i];
         if (!ret) {
-            ret = range;
+            ret = range.slice(0);
         } else {
             let inter = [];
             for (let j = 0; j < range.length; j++) {
