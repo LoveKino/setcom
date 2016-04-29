@@ -119,7 +119,7 @@ let descartes = (ranges) => {
     ]
 ]
 */
-let unionSet = (ranges) => {
+let unionSet = (ranges, eq) => {
     let ret = null;
     for (let i = 0; i < ranges.length; i++) {
         let range = ranges[i];
@@ -127,7 +127,7 @@ let unionSet = (ranges) => {
             ret = range;
         } else {
             for (let j = 0; j < range.length; j++) {
-                if (!contain(ret, range[j])) {
+                if (!contain(ret, range[j], eq)) {
                     ret.push(range[j]);
                 }
             }
@@ -150,10 +150,10 @@ let unionSet = (ranges) => {
     ]
 ]
 */
-let difference = (set1, set2) => {
+let difference = (set1, set2, eq) => {
     let diff = [];
     for (let i = 0; i < set1.length; i++) {
-        if (!contain(set2, set1[i])) {
+        if (!contain(set2, set1[i], eq)) {
             diff.push(set1[i]);
         }
     }
@@ -178,7 +178,7 @@ let difference = (set1, set2) => {
     ]
 ]
 */
-let interset = (ranges) => {
+let interset = (ranges, eq) => {
     let ret = null;
     for (let i = 0; i < ranges.length; i++) {
         let range = ranges[i];
@@ -187,7 +187,7 @@ let interset = (ranges) => {
         } else {
             let inter = [];
             for (let j = 0; j < range.length; j++) {
-                if (contain(ret, range[j])) {
+                if (contain(ret, range[j], eq)) {
                     inter.push(range[j]);
                 }
             }
@@ -198,9 +198,10 @@ let interset = (ranges) => {
 };
 
 
-let contain = (list, item) => {
+let contain = (list, item, eq) => {
+    eq = eq || defEq;
     for (let i = 0; i < list.length; i++) {
-        if (list[i] === item) {
+        if (eq(list[i], item)) {
             return true;
         }
     }
@@ -238,9 +239,10 @@ let andHigh = (boolFuns, params) => {
     return true;
 };
 
-let findIndex = (list, item) => {
+let findIndex = (list, item, eq) => {
+    eq = eq || defEq;
     for (let i = 0; i < list.length; i++) {
-        if (list[i] === item) {
+        if (eq(list[i], item)) {
             return i;
         }
     }
@@ -306,6 +308,28 @@ let section = (start, end, step) => {
     return ret;
 };
 
+/**
+ * ## test
+[
+    [
+        [
+            [1, 4, 6, 7, 4]
+        ],
+        [1, 4, 6, 7]
+    ]
+]
+*/
+let deRepeat = (list, eq) => {
+    let ret = [];
+    for (let i = 0; i < list.length; i++) {
+        if (!contain(ret, list[i], eq)) {
+            ret.push(list[i]);
+        }
+    }
+    return ret;
+};
+
+let defEq = (a, b) => a === b;
 module.exports = {
     contain,
     unionSet,
@@ -315,5 +339,6 @@ module.exports = {
     andHigh,
     findIndex,
     section,
-    difference
+    difference,
+    deRepeat
 };
