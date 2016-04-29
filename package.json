@@ -1,6 +1,6 @@
 {
   "name": "setcom",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "General Set DSL",
   "main": "index.js",
   "scripts": {
