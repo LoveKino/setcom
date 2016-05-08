@@ -18,6 +18,21 @@ let defSet = (domain, predi, outputFun) => {
     return set.defSet(domain, predi, outputFun);
 };
 
+let union = function () {
+    let args = Array.prototype.slice.call(arguments);
+    return baseset.union(args);
+};
+
+let interset = function () {
+    let args = Array.prototype.slice.call(arguments);
+    return baseset.interset(args);
+};
+
+let descartes = function () {
+    let args = Array.prototype.slice.call(arguments);
+    return baseset.descartes(args);
+};
+
 // support array and ... expandation
 let any = (v) => logic.any(getVariable(v));
 let exist = (v) => logic.exist(getVariable(v));
@@ -43,10 +58,10 @@ module.exports = {
     any: any,
     exist: exist,
     contain: baseset.contain,
-    unionSet: baseset.unionSet,
-    interset: baseset.interset,
+    union,
+    interset: interset,
     difference: baseset.difference,
-    descartes: baseset.descartes,
+    descartes,
     elemOf: set.elemOf,
     section: baseset.section,
     defSet,

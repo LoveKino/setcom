@@ -27,7 +27,7 @@ let combineMatrix = (rangeMatrix) => {
     for (let i = 0; i < rangeMatrix.length; i++) {
         ranges.push(interset(rangeMatrix[i]));
     }
-    return unionSet(ranges);
+    return union(ranges);
 };
 
 /**
@@ -119,7 +119,7 @@ let descartes = (ranges) => {
     ]
 ]
 */
-let unionSet = (ranges, eq) => {
+let union = (ranges, eq) => {
     let ret = null;
     for (let i = 0; i < ranges.length; i++) {
         let range = ranges[i];
@@ -196,7 +196,6 @@ let interset = (ranges, eq) => {
     }
     return ret || [];
 };
-
 
 let contain = (list, item, eq) => {
     eq = eq || defEq;
@@ -333,7 +332,7 @@ let defEq = (a, b) => a === b;
 
 module.exports = {
     contain,
-    unionSet,
+    union,
     interset,
     combineMatrix,
     descartes,

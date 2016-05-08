@@ -70,7 +70,7 @@ let reduceRanges = (ranges) => {
         for (let j = 0; j < rangeList.length; j++) {
             let range = rangeList[j];
             if (isVariable(range)) {
-                ranges[i][j] = baseset.unionSet(all(range));
+                ranges[i][j] = baseset.union(all(range));
             }
         }
     }
@@ -139,7 +139,7 @@ let getAllPredicates = (vars) => {
     for (let i = 0; i < vars.length; i++) {
         let variable = vars[i];
         let predicates = variable.predicates;
-        preds = baseset.unionSet([preds, predicates]);
+        preds = baseset.union([preds, predicates]);
     }
     return preds;
 };
