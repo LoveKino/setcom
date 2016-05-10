@@ -1,6 +1,14 @@
 'use strict';
 
 let baseset = require('./baseset');
+let util = require('./util');
+
+let combineMatrix = util.combineMatrix;
+let findIndex = util.findIndex;
+let union = baseset.union;
+let interset = baseset.interset;
+let descartes = baseset.descartes;
+let contain = baseset.contain;
 
 /**
  * variable
@@ -15,7 +23,7 @@ let all = function () {
     let rets = red.rets;
     if (args.length === 1) {
         let res = [];
-        let index = baseset.findIndex(red.vars, args[0]);
+        let index = findIndex(red.vars, args[0]);
         for (let i = 0; i < rets.length; i++) {
             res.push(rets[i][index]);
         }
@@ -38,7 +46,7 @@ let narrow = (variable) => {
     if (variable.pick) {
         let pickRange = reducePick(variable.pick);
         if (range) {
-            range = baseset.interset([range, pickRange]);
+            range = interset([range, pickRange]);
         } else {
             range = pickRange;
         }
@@ -70,11 +78,11 @@ let reduceRanges = (ranges) => {
         for (let j = 0; j < rangeList.length; j++) {
             let range = rangeList[j];
             if (isVariable(range)) {
-                ranges[i][j] = baseset.union(all(range));
+                ranges[i][j] = union(all(range));
             }
         }
     }
-    return baseset.combineMatrix(ranges);
+    return combineMatrix(ranges);
 };
 
 let isVariable = (v) => v && typeof v === 'object' && v.__type === 'variable';
@@ -85,7 +93,7 @@ let reducePredicates = (variables) => {
     for (let i = 0; i < vars.length; i++) {
         ranges.push(narrow(vars[i]));
     }
-    let range = baseset.descartes(ranges);
+    let range = descartes(ranges);
     //
     let predicates = getAllPredicates(vars);
     let rets = filterFromPredicates(predicates, vars, range);
@@ -128,7 +136,7 @@ let getParams = (params, indexes) => {
 let getIndexes = (vars, depVars) => {
     let indexes = [];
     for (let i = 0; i < depVars.length; i++) {
-        let index = baseset.findIndex(vars, depVars[i]);
+        let index = findIndex(vars, depVars[i]);
         indexes.push(index);
     }
     return indexes;
@@ -139,7 +147,7 @@ let getAllPredicates = (vars) => {
     for (let i = 0; i < vars.length; i++) {
         let variable = vars[i];
         let predicates = variable.predicates;
-        preds = baseset.union([preds, predicates]);
+        preds = union([preds, predicates]);
     }
     return preds;
 };
@@ -156,8 +164,8 @@ let findRelatedVars = (open, close) => {
             let depVars = predicate.vars;
             for (let j = 0; j < depVars.length; j++) {
                 let depVar = depVars[j];
-                if (!baseset.contain(close, depVar) &&
-                    !baseset.contain(open, depVar)
+                if (!contain(close, depVar) &&
+                    !contain(open, depVar)
                 ) {
                     open.push(depVar);
                 }
